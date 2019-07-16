@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ellipsis</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html, body{
+            width: 100%;
+            height: 100%;
+        }
+        .container{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container > .text{
+            width: 120px;
+            height: 40px;
+            background-color: aqua;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 10px;
+        }
+        .item1{
+            flex:1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text item1">2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d</div>
+        <div class="text item2">2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d</div>
+        <div class="text item3">2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d</div>
+        <div class="text item4">2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d</div>
+    </div>
+    
+</body>
+</html>
