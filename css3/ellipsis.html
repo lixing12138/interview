@@ -16,30 +16,141 @@
         }
         .container{
             height: 100%;
-            display: flex;
+            /* display: flex; */
             justify-content: center;
             align-items: center;
         }
         .container > .text{
             width: 120px;
-            height: 40px;
+            height: 50px;
             background-color: aqua;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            /* overflow: hidden; */
+            /* text-overflow: ellipsis; */
             margin-bottom: 10px;
+            line-clamp :3;
         }
         .item1{
             flex:1;
             resize: both;
         }
+        .column{
+            column-count: 3;
+            column-gap: 60px;
+            text-align: justify;
+            column-rule: 4px dashed #343543;
+        }
+        .transition{
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+            margin-left: 200px;
+            transition: width 2s, transform 2s;
+        }
+        .transition:hover{
+            width: 150px;
+            height: 150px;
+            transform: rotate(180deg) scale(2) skew(30deg,30deg) translate(10px,10px);
+        }
     </style>
 </head>
 <body>
+    <div class="column">
+            From Wikipedia, the free encyclopedia Jump to navigationJump to search   Original author(s)	Ken Thompson
+            Developer(s)	AT&T Bell Laboratories
+            Initial release	June 1974; 45 years ago
+            Operating system	Unix and Unix-like
+            Type	Command
+            dd is a command-line utility for Unix and Unix-like operating systems, the primary purpose of which is to convert and copy files.[1]
+            
+            On Unix, device drivers for hardware (such as hard disk drives) and special device files (such as /dev/zero and /dev/random) appear in the file system just like normal files; dd can also read and/or write from/to these files, provided that function is implemented in their respective driver. As a result, dd can be used for tasks such as backing up the boot sector of a hard drive, and obtaining a fixed amount of random data. The dd program can also perform conversions on the data as it is copied, including byte order swapping and conversion to and from the ASCII and EBCDIC text encodings.[2]
+            
+            
+            Contents
+            1	History
+            2	Usage
+            3	Output messages
+            4	Block size
+            5	Uses
+            5.1	Data transfer
+            5.2	Master boot record backup and restore
+            5.3	Data modification
+            5.4	Disk wipe
+            5.5	Data recovery
+            5.6	Benchmarking drive performance
+            5.7	Generating a file with random data
+            5.8	Converting a file to upper case
+            5.9	Progress Indicator
+            6	Limitations
+            7	Dcfldd
+            8	See also
+            9	Notes
+            10	References
+            11	External links
+            History
+            The name dd is an allusion to the DD statement found in IBM's Job Control Language (JCL),[3][4] in which the initials stand for "Data Definition".[5] The command's syntax resembles the JCL statement more than other Unix commands do, so the syntax may have been a joke.[3]
+            
+            Originally intended to convert between ASCII and EBCDIC, dd first appeared in Version 5 Unix.[6] The dd command is specified by IEEE Std 1003.1-2008, which is part of the Single UNIX Specification.
+            
+            The version of dd bundled in GNU coreutils was written by Paul Rubin, David MacKenzie, and Stuart Kemp.[7]
+            
+            Usage
+            The command line syntax of dd differs from many other Unix programs, it uses the syntax option=value for its Command-line options rather than the more-standard -option value or --option=value formats., exception is e.g. Plan 9's dd command, using standard command line option style.[8] By default, dd reads from stdin and writes to stdout, but these can be changed by using the if (input file) and of (output file) options.
+            
+            Usage varies across different operating systems. Also, certain features of dd will depend on the computer system capabilities, such as dd's ability to implement an option for direct memory access. Sending a SIGINFO signal (or a USR1 signal on Linux) to a running dd process makes it print I/O statistics to standard error once and then continue copying. dd can read standard input from the keyboard. When end-of-file (EOF) is reached, dd will exit. Signals and EOF are determined by the software. For example, Unix tools ported to Windows vary as to the EOF: Cygwin uses Ctrl+D (the usual Unix EOF) and MKS Toolkit uses ctrl+z (the usual Windows EOF).
+            
+            Output messages
+            The GNU variant of dd as supplied with GNU coreutils does not describe the format of the messages displayed on standard output on completion. However, these are described by other implementations, e.g. that with BSD.
+            
+            Each of the "Records in" and "Records out" lines shows the number of complete blocks transferred + the number of partial blocks, e.g. because the physical medium ended before a complete block was read, or a physical error prevented reading the complete block.
+            
+            Block size
+            A block is a unit measuring the number of bytes that are read, written, or converted at one time. Command line options can specify a different block size for input/reading (ibs) compared to output/writing (obs), though the block size (bs) option will override both ibs and obs. The default value for both input and output block sizes is 512 bytes (the traditional block size of disks, and POSIX-mandated size of "a block"). The count option for copying is measured in blocks, as are both the skip count for reading and seek count for writing. Conversion operations are also affected by the "conversion block size" (cbs).
+            
+            The value provided for block size options is interpreted as a decimal (base 10) integer number of bytes. It can also contain suffixes to indicate that the block size is an integer number of larger units than bytes. The suffix w (words) means multiplication by 2, lowercase b (blocks) means 512, lowercase k (kibibytes) means 1024, then uppercase M (Mebibytes) means 1024 × 1024, G (Gibibytes) means 1024 × 1024 × 1024, and so on for Tebibytes, Exbibytes, Pebibytes, Zebibytes, and Yobibytes. Some implementations also understand the suffix uppercase B to indicate SI units such as kB (kilobytes) for 1000 bytes or MB (Megabytes) for 1,000,000 bytes. Thus bs=16M indicates a blocksize of 16 mebibytes (16,777,216 bytes), or bs=3kB specifies 3,000 bytes.
+            
+            Additionally, some implementations understand the x character as a multiplication operator for both block size and count parameters. For example, bs=2x80x18b is interpreted as 2 × 80 × 18 × 512 = 1474560 bytes, the exact size of a 1440 KiB floppy disk.
+            
+            For some uses of the dd command, block size has an effect on performance. Doing many small reads or writes is often slower than doing fewer large ones. Using large blocks requires more RAM and can complicate error recovery. When dd is used with variable-block-size devices such as tape drives or networks, the block size may determine the tape record size or packet size, depending on the network protocol used.
+            
+            Uses
+            The dd command can be used for a variety of purposes.
+            
+            Data transfer
+            dd can duplicate data across files, devices, partitions and volumes. The data may be input or output to and from any of these; but there are important differences concerning the output when going to a partition. Also, during the transfer, the data can be modified using the conv options to suit the medium.
+            
+            An attempt to copy the entire disk using cp may omit the final block if it is of an unexpected length[citation needed]; whereas dd may succeed. The source and destination disks should have the same size.
+            
+            Data transfer forms of dd
+            blocks=$(isosize -d 2048 /dev/sr0)
+            dd if=/dev/sr0 of=isoimage.iso bs=2048 count=$blocks status=progress
+            Creates an ISO disk image
+            from a CD-ROM, DVD or Blu-ray disk.[9]
+            dd if=system.img of=/dev/sdc bs=4096 conv=noerror
+            Restores a hard disk drive
+            (or an SD card, for example)
+            from a previously created image.
+            dd if=/dev/sda2 of=/dev/sdb2 bs=4096 conv=noerror
+            Clones one partition to another.
+            dd if=/dev/ad0 of=/dev/ad1 bs=1M conv=noerror
+            Clones a hard disk drive "ad0" to "ad1".
+            The noerror option means to keep going if there is an error, while the sync option causes output blocks to be padded.
+            
+            Master boot record backup and restore
+            It is possible to repair a master boot record. It can be transferred to and from a repair file.
+            
+            To duplicate the first two sectors of a floppy drive:
+            
+            dd if=/dev/fd0 of=MBRboot.img bs=512 count=2
+            To create an image of the entire x86 master boot record (including a MS-DOS partition table and MBR magic bytes):    
+    </div>
+    <div class="transition">
+
+    </div>
     <div class="container">
         <div class="text item1">2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d</div>
         <div class="text item2">2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d</div>
         <div class="text item3">2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d</div>
-        <div class="text item4">2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d</div>
+        <p class="text item4">2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d2d</p>
     </div>
     
 </body>
