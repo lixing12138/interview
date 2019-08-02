@@ -1,2 +1,2 @@
-// 迭代方法 ：filter every some map froEach
+// 迭代方法 ：filter every some map forEach
 // 

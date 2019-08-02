@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css filter</title>
+    <style>
+        .pic{
+            mask-image: url(https://pics0.baidu.com/feed/0e2442a7d933c895f80a45cc7fc158f58302006c.jpeg?token=b2b33e3a9465b5356fcb16e02400ab70&s=2362D803C29767E79939D1EA0300D011);
+        }
+        .radial-blur{
+            filter: blur(5px);
+        }
+        .flow-slogon {
+            font-size: 100px;
+            /* -webkit-background-clip: text; */
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia);
+            animation: hue 6s linear infinite;
+        }
+        @keyframes hue {
+            from { filter: hue-rotate(0deg); }
+            to { filter: hue-rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <p>原图</p>
+    <img src="./1.jpg" alt="原图" class="pic">
+    <p>效果：径向模糊</p>
+    <img src="./1.jpg" alt="效果1" class="radial-blur">
+    <h2 class="flow-slogon">第4届中国前端开发者千人峰会</h2>
+</body>
+</html>

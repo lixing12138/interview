@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* float */
+        
+        .container{
+            background-color: aqua;
+            visibility: hidden;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 2px;
+            float: left;
+
+        }
+        .son3{            
+            background-color: green;
+        }
+        .container::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+       
+       
+        /* overflow */
+        /* .container{
+            background-color: black;
+        }
+        .item{
+            float: left;
+            margin: 2px;
+        }
+        .div1{
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+        }
+        .div2{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        } */
+    </style>
+</head>
+<body>
+    <h1>float</h1>
+    <div class="container">
+        <div class="son1 son">1</div>
+        <div class="son2 son">2</div>
+        <div class="son3 son">3</div>
+        <div class="son4 son">4</div>
+    </div>
+    <p>fhjh</p>
+    <!-- <h1>overflow</h1>
+    <div class="container">
+        <div class="div1 item"></div>
+        <div class="div2 item"></div>
+    </div> -->
+</body>
+</html>

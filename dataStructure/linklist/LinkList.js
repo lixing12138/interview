@@ -1,32 +1,32 @@
 const Node = require('./Node');
-class LinkList{
-    constructor(){
+class LinkList {
+    constructor() {
         this.head = null;
         this.length = 0;
     }
-    append(element){
+    append(element) {
         let node = new Node(element);
-        if(this.head === null){
+        if (this.head === null) {
             this.head = node;
-        }else{
-           let cur = this.head;
-            while(cur.next !== null){
+        } else {
+            let cur = this.head;
+            while (cur.next !== null) {
                 cur = cur.next;
-            } 
+            }
             cur.next = node;
 
         }
-        this.length ++;
+        this.length++;
     }
-    insert(position, element){
-        if(position > this.length || position < 0){
+    insert(position, element) {
+        if (position > this.length || position < 0) {
             return false;
-        }else{
+        } else {
             let cur = this.head;
-            let next = null; 
+            let next = null;
             let node = new Node(element);
-            while(cur.next !== null){
-                if( --position <= 0 ){
+            while (cur.next !== null) {
+                if (--position <= 0) {
                     next = cur.next;
                     break;
                 }
@@ -37,31 +37,31 @@ class LinkList{
             this.length++;
         }
     }
-    removeAt(position){
-        if(position > this.length || position < 0 || this.length === 0){
+    removeAt(position) {
+        if (position > this.length || position < 0 || this.length === 0) {
             return false;
-        }else{
+        } else {
             let cur = this.head;
-            if(position === 0){
+            if (position === 0) {
                 this.head = cur.next;
-            }else{
+            } else {
                 let pre = null;
-                while(position > 0){
+                while (position > 0) {
                     pre = cur;
                     cur = cur.next;
                     position--;
-                }  
+                }
                 pre.next = cur.next;
             }
             this.length--;
-            
+
         }
     }
-    indexOf(element){
+    indexOf(element) {
         let cur = this.head;
         let index = 0;
-        while(cur !== null){
-            if(cur.val === element){
+        while (cur !== null) {
+            if (cur.val === element) {
                 break;
             }
             index++;
@@ -69,25 +69,25 @@ class LinkList{
         }
         return index;
     }
-    remove(element){
+    remove(element) {
         return this.removeAt(this.indexOf(element));
     }
-    isEmpty(){
+    isEmpty() {
         return this.head === null;
     }
-    size(){
+    size() {
         return this.length;
     }
-    getHead(){
+    getHead() {
         return this.head;
     }
-    print(){
-
+    print() {
+        console.log();
     }
-    list(){
+    list() {
         return this.head;
     }
-    reverse(){
+    reverse() {
 
     }
 }

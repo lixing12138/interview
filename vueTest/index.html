@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="root" >
+        {{ message }}{{ now }}
+        <p v-on:click = 'reverseMsg'>看得见看不见</p>
+        <button :disabled ='true'>fff</button>
+        {{ now2 }}
+        <ul>
+            <li v-for = 'todo in todos'>{{ todo.text }}</li>
+        </ul>
+        <input type="text" v-model = 'message'>
+        <!-- 子组件 -->
+        <p>子组件</p>
+        <todo-item v-for ='todo in todos' :todo = 'todo.text'></todo-item>
+    </div>
+    <div id="root2" v-bind:title = 'msg'>1111</div>
+    <script>
+        // 定义一个组件
+        Vue.component('todo-item', {
+            props:['todo'],
+            template: '<li>{{ todo }}</li>'
+        });
+        let app = new Vue({
+            el: '#root',
+            data:{
+                message: 'Hello Vue',
+                seen: false,
+                todos: [
+                    { text: 'ddd' },
+                    { text: '222' },
+                    { text: '444' }
+                ],
+                now2:''
+            },
+            computed:{
+                now: () => Date.now()
+            },
+            created:function(){
+                this.getNow2();
+            },
+            zidingyi:'222',
+            methods:{
+                reverseMsg:function(){
+                    console.log(this.$el);
+                    console.log(this.$options.zidingyi);
+                    this.message = this.message.split('').reverse().join('')
+                },
+                getNow2:function(){
+                    this.now2 = Date.now();
+                }
+            }
+        });
+        let app2 = new Vue({
+            el: '#root2',
+            data:{
+                msg: `页面加载于：${new Date().toLocaleString()}`
+            }
+        });
+    </script>
+</body>
+</html>

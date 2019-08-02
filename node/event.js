@@ -1,3 +1,4 @@
+// 实现eventloop
 class Event{
     constructor(){
         this.events = {}
@@ -42,3 +43,11 @@ ee.emit('TEST2','rrrrrr');
 // In test2 again
 console.log('....')
 ee.emit('TEST2');
+
+
+setTimeout(function(){
+    console.log(2);
+},2000);setTimeout(function(){
+    console.log(1);
+},1000);
+console.log(3);
