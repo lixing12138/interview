@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现数据双向绑定</title>
+</head>
+<body>
+    <input type="text" id="source">
+    <span id="target"></span>
+    <script>
+        let data = {};
+        Object.defineProperty(data, value, {
+            configurable: true,
+            get:function(){
+            document.getElementById('data').innerText = data.value;
+                return value;
+            },
+            set:function(newVal){
+            document.getElementById('data').innerText = data.value;
+
+            }
+        });
+        document.getElementById('source').addEventListener('keyup',function(){
+            
+        });
+    </script>
+</body>
+</html>
