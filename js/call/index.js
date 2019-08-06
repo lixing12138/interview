@@ -47,10 +47,3 @@ function myNew(fun){
         return obj;
     }
 }
-
-
-
-
-
-
- 

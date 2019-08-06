@@ -14,24 +14,37 @@
             width: 100%;
             height: 100%;
         }
-        .container{
-            height: 300px;
-            width: 300px;
-            background-color: aqua;
-            text-align: center;
-            display: inline-block;
-        }
-        .item{
-            vertical-align: middle;
-            display: inline-block;
-        }
+    
+    
+        .parent {
+            overflow: hidden;
+            zoom: 1;
+            }
+            .left {
+            float: left;
+            margin-right: 20px;
+            }
+            .right {
+            overflow: hidden;
+            zoom: 1;
+            }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="item">fdsdf</div>
+        <div class="item" style="float: left;background-color: red">fdsdf</div>
         <div class="item">fdsdf</div>
     </div>
     <div class="container">sa</div>
+    <div class="parent" style="background-color: lightgrey;">
+        <div class="left" style="background-color: lightblue;">
+            <p>left</p>
+        </div>
+        <div class="right"  style="background-color: lightgreen;">
+            <p>right</p>
+            <p>right</p>
+        </div>        
+    </div>
 </body>
 </html>
