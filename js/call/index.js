@@ -6,7 +6,7 @@ Function.prototype.call2 = function(that,...rest){
     return res;
 }
 
-Function.prototype.apply = function(that, rest){
+Function.prototype.apply2 = function(that, rest){
     let context = that || window;
     context.fn = this;
     let res = context.fn(...rest);
@@ -46,4 +46,19 @@ function myNew(fun){
         fun.call(obj, ...arguments);
         return obj;
     }
+}
+
+// instanceof实现
+
+function instanceofMe(o, Obj){
+  let type = o.__prototype__;
+  while(true){
+    if(type === Obj.prototype){
+      return true;
+    }
+    if(type === null){
+      return false;
+    }
+    type = type.__prototype__;
+  }
 }

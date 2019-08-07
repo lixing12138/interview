@@ -6,7 +6,7 @@ function curry(fn){
         return fn.apply(this, finalArgs);
     }
 }
-
+// 将一个使用多个参数的函数转换成单个参数的函数
 function cur(fn, arg = []){
     let length = fn.length;
     let args = arg;
