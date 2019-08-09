@@ -17,7 +17,6 @@ class Event{
     removeListener(event, cb){
         let index = this.events[event].indexOf(cb);
         this.events[event].splice(index,1);
-        
     }
 }
 // 测试
